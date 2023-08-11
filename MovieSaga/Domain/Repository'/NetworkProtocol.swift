@@ -16,4 +16,5 @@ protocol NetworkService {
      headers: HTTPHeaders,
      completion: @escaping(Result<T,Error>) -> Void
     )
+    
 }

@@ -8,6 +8,8 @@
 import Foundation
 import Alamofire
 
-protocol FetchMovieRepositoryProtocol {
+protocol FetchMovieListRepositoryProtocol {
     func getMoviesList(completion: @escaping (Swift.Result<MovieData,Error>) -> Void )
 }
+
+

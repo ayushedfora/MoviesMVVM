@@ -9,9 +9,9 @@ import Foundation
 
 
 class FetchMovieUseCase: FetchMovieUseCaseProtocol {
-    var movieApiService: FetchMovieRepositoryProtocol
+    var movieApiService: FetchMovieListRepositoryProtocol
     
-    init(movieRepository: FetchMovieRepositoryProtocol){
+    init(movieRepository: FetchMovieListRepositoryProtocol){
         self.movieApiService = movieRepository
     }
     
