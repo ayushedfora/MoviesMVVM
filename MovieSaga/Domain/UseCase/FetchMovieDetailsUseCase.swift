@@ -14,8 +14,8 @@ class FetchMovieDetails: FetchSingleMovieUseCaseProtocol {
         self.movieRepository = movieRepositoryInstance
     }
     
-    func fetchSingleMovieDetails(completion: @escaping (Result<MovieData, Error>) -> Void) {
-        movieRepository.fetchMovieDetails { (result: Result<MovieData,Error>) in
+    func fetchSingleMovieDetails(movieId: Int, completion: @escaping (Result<SingleMovieData, Error>) -> Void) {
+        movieRepository.fetchMovieDetails(movieId: movieId) { (result: Result<SingleMovieData,Error>) in
             switch result {
             case .success(let movieData):
                 completion(.success(movieData))

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol FetchSingleMovieUseCaseProtocol {
-    func fetchSingleMovieDetails(completion: @escaping (Swift.Result<MovieData,Error>)->Void)
+    func fetchSingleMovieDetails(movieId: Int, completion: @escaping (Swift.Result<SingleMovieData,Error>)->Void)
 }

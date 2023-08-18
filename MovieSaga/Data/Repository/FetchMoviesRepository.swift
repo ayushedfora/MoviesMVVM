@@ -27,11 +27,12 @@ final class FetchMovieListRepository: FetchMovieListRepositoryProtocol{
           ])
         let url = BASE_URL + MOVIE_LIST_ENDPOINT
         
-
-        networkService.request(url: url, mathod: .get, headers: headers) { (result: Result<MovieData,Error>) in
+        let params : Parameters = [
+            :
+        ]
+        networkService.request(url: url, mathod: .get, headers: headers, params:params, encoder: .default) { (result: Result<MovieData,Error>) in
           
             switch result {
-                
             case .success(let data):
                 completion(.success(data))
             case .failure(let error):

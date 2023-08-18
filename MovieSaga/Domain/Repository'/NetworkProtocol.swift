@@ -14,6 +14,8 @@ protocol NetworkService {
      url: String,
      mathod: HTTPMethod,
      headers: HTTPHeaders,
+     params: Parameters,
+     encoder: JSONParameterEncoder,
      completion: @escaping(Result<T,Error>) -> Void
     )
     

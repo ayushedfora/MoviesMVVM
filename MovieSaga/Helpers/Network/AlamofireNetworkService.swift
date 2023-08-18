@@ -10,9 +10,13 @@ import Alamofire
 
 
 class AlamofireNetworkService: NetworkService {
-    func request<T>(url: String, mathod: Alamofire.HTTPMethod, headers: Alamofire.HTTPHeaders, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable {
-        AF.request("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",method: mathod,headers: headers).responseDecodable(of: T.self) { response in
-           
+    func request<T>(url: String, mathod: Alamofire.HTTPMethod, headers: Alamofire.HTTPHeaders, params: Parameters,encoder: JSONParameterEncoder,completion: @escaping (Result<T, Error>) -> Void) where T : Decodable {
+        print(url)
+        print(params)
+        print("url hello")
+        AF.request(url,method: mathod,parameters: params, headers: headers).responseDecodable(of: T.self) { response in
+            print(response)
+            print("HELLO response")
             switch response.result {
             case .success(let data):
                 completion(.success(data))

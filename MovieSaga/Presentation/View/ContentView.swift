@@ -23,7 +23,9 @@ struct ContentView: View {
         ZStack {
             LinearGradient(colors:[.white,.white], startPoint: .topLeading, endPoint: .bottomTrailing
             ).edgesIgnoringSafeArea(.all)
+            NavigationStack{
             List(movieViewModel.moviesList?.results ?? [],id:\.id) { movie in
+                
                 HStack(alignment: .top, spacing: 20){
                     VStack(alignment: .leading){
                         Text(movie.originalTitle).font(.title3).lineLimit(1)
@@ -32,12 +34,15 @@ struct ContentView: View {
                         } icon: {
                             Image(systemName: "star.fill").renderingMode(.template).foregroundColor(.yellow)
                         }
-
-
+                        
+                        
                     }.foregroundColor(.black)
                     AsyncImage(url: URL(string: movie.posterPath)).frame(width: 50, height: 50).frame(maxWidth: .infinity, alignment: .trailing)
                 }
+            }.navigationDestination(for: SingleMovieData.self) { singleMovieData in
+               SingleMovieDetailView()
             }
+        }
         }
         .padding()
         .onAppear(){

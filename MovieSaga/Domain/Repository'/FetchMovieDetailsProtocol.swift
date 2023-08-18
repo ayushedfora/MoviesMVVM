@@ -9,6 +9,6 @@ import Foundation
 
 
 protocol FetchMovieDetailsRepositoryProtocol {
-    func fetchMovieDetails(completion: @escaping (Swift.Result<MovieData,Error>) -> Void)
+    func fetchMovieDetails(movieId: Int, completion: @escaping (Swift.Result<SingleMovieData,Error>) -> Void)
     func addTwoNumbers(a:Int, b: Int) -> Int
 }

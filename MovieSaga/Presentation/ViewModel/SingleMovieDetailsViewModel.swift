@@ -8,8 +8,8 @@
 import Foundation
 
 
-class SingleMovieDetails: ObservableObject {
-    @Published var singleMovieDetail: String = ""
+class SingleMovieDetailsViewModel: ObservableObject {
+    @Published var singleMovieDetail: SingleMovieData?
     
     var fetchSingleMovieUseCase: FetchSingleMovieUseCaseProtocol
     
@@ -18,10 +18,10 @@ class SingleMovieDetails: ObservableObject {
     }
     
     func execute() {
-        fetchSingleMovieUseCase.fetchSingleMovieDetails { [weak self] (result: Swift.Result<MovieData,Error>) in
+        fetchSingleMovieUseCase.fetchSingleMovieDetails(movieId: 569094) { [weak self] (result: Swift.Result<SingleMovieData,Error>) in
             switch result {
             case .success(let data):
-                self?.singleMovieDetail = data.results[0].title
+                self?.singleMovieDetail = data
             case .failure(let error):
                 print(error)
             }
